@@ -38,7 +38,7 @@ function _bind(scope, fn) {
 
 function CacheJson() {}
 var p = CacheJson.prototype;
-var DIR_ZUOYE = "mathgames0";
+var APP_DIR = "dataDir";
 var CACHE_FILE_SUFFIX = ".cache";
 
 var CacheErrorCode = {
@@ -172,8 +172,8 @@ p.readAsText = function(file, callback) {
  * @return {[type]}         [description]
  */
 p.getFilesystem = function(success, fail) {
-    window.resolveLocalFileSystemURL(cordova.file.dataDirectory + DIR_ZUOYE, success, function(e) {
-        console.error("fail to resolveLocalFileSystemURL", cordova.file.dataDirectory + DIR_ZUOYE);
+    window.resolveLocalFileSystemURL(cordova.file.dataDirectory + APP_DIR, success, function(e) {
+        console.error("fail to resolveLocalFileSystemURL", cordova.file.dataDirectory + APP_DIR);
         typeof fail === 'function' && fail(new CacheError(CacheErrorCode.FAIL_RESOLVE_FS, e));
     });
 };
